@@ -3,8 +3,10 @@ const clockContainer = document.querySelector('.js-clock'),
 
 const value = localStorage.getItem('name')
 const form = document.querySelector('.form')
-const input = document.querySelector('.inputForm')
+const inputing = document.querySelector('.inputForm')
 const h4 = document.querySelector('.js-greeting')
+const btn = document.querySelector('.btn')
+
     function getTime() {
         const date = new Date();
         const miniutes = date.getMinutes();
@@ -14,20 +16,24 @@ const h4 = document.querySelector('.js-greeting')
 
     }
     addEventListener('load',getTime)
-    setInterval(getTime,10000);
+    setInterval(getTime,1000);
 
-
-    input.addEventListener('keypress',event=>{
-        if(event.key === 'Enter'){
-            const naming = input.value
-            localStorage.setItem('name', naming)
-            setName(naming);
-            input.value = '';
-        }else {
-            
-        }
+    inputing.addEventListener('keyup', event=>{
+        if (event.keyCode == 13){goNaming()}
+    })
+    btn.addEventListener('click',()=>{
+        goNaming()
     })
 
     function setName(potato){
         h4.innerHTML = `Hello it's great day Mrs/Ms ${potato}`
+        return
     }
+
+    function goNaming() {
+        if(inputing.value !== '')
+            {const naming = inputing.value
+            localStorage.setItem('name', naming)
+            inputing.value = ''
+            setName(naming);
+        }}
