@@ -29,6 +29,11 @@
   width: 100%;
   height: 400px;
   padding: 0 50px;
+  overflow-y: auto;
+}
+
+.items::-webkit-scrollbar {
+  display: none;
 }
 
 .item {

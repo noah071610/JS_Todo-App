@@ -61,14 +61,15 @@ todo.addEventListener('keyup',event=>{
 let id = 0;
 function goTodo() {
     const val = todo.value
-    const li = document.createElement('Li')
+    if(val !== '')
+    {const li = document.createElement('Li')
     li.setAttribute('class','item')
     li.setAttribute('data-key',id)
     li.innerHTML= val;
     id++
-    items.appendChild(li)
+    items.appendChild(li).scrollIntoView();
     todo.value=''
-}
+}}
 
 items.addEventListener('click', event=>{
     const id = event.target.dataset.key
